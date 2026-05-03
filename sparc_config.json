@@ -34,6 +34,6 @@
     ],
 
     "tuning_params": [
-        {"name": "NameOfParameter",     "default": 100, "min": 0,     "max": 200, "ck": 8, "ak": 0.002}
+        {"name": "NameOfParameter",     "default": 100, "min": 0,     "max": 200, "ck": 8, "rk": 0.002}
     ]
 }

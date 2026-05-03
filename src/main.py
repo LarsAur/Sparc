@@ -52,15 +52,15 @@ def main():
     # Parse tunable parameters
     tunable_parameters : List[TunableParameter] = []
     for param in all_configs["tuning_params"]:
-        if "name" not in param or "default" not in param or "min" not in param or "max" not in param or "ck" not in param or "ak" not in param:
-            parser.error("Each tunable parameter must have a name, default value, min value, max value, ck and ak: " + str(param))
+        if "name" not in param or "default" not in param or "min" not in param or "max" not in param or "ck" not in param or "rk" not in param:
+            parser.error("Each tunable parameter must have a name, default value, min value, max value, ck and rk: " + str(param))
         tunable_parameters.append(TunableParameter(
             name=param["name"],
             default=float(param["default"]),
             min_val=float(param["min"]),
             max_val=float(param["max"]),
             c_k=float(param["ck"]),
-            r_k=float(param["ak"])
+            r_k=float(param["rk"])
         ))
 
     tuning_manager = TuningManager(configs, fixed_parameters, tunable_parameters)
