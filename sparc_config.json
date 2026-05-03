@@ -1,0 +1,39 @@
+{
+    "configs": {
+        "engine_path": "",
+        "fastchess_path": "",
+        "iterations": 10000,
+        "matches": 8,
+        "concurrency": 8,
+        "openings_path": "",
+        "save_path": "sparc_save.json",
+        "plot_name": "plot",
+        "nodes": 0,
+        "depth": 0,
+        "movetime": 0,
+        "time": 60,
+        "increment": 0.5,
+        "pgn_path": "sparc_games.pgn",
+        "tb_path": "",
+        "draw_adjudication": {
+            "enabled": false,
+            "movenumber": 40,
+            "movecount": 10,
+            "threshold": 10
+        },
+        "resign_adjudication": {
+            "enabled": false,
+            "movecount": 10,
+            "threshold": 600,
+            "twosided": true
+        }
+    },
+
+    "fixed_params": [
+        {"name": "Hash",          "value": 32}
+    ],
+
+    "tuning_params": [
+        {"name": "NameOfParameter",     "default": 100, "min": 0,     "max": 200, "ck": 8, "ak": 0.002}
+    ]
+}

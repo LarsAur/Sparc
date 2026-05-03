@@ -1,0 +1,7 @@
+__pycache__
+*.exe
+*.log
+*.png
+*.pgn
+*.json
+*.epd
