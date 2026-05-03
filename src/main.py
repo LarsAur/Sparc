@@ -9,9 +9,9 @@ import cProfile
 
 def main():
     parser = argparse.ArgumentParser(description="Sparc Chess Engine Tuner")
-    parser.add_argument("config_path",   type=str, help="Path to the file containing tunable and fixed parameters")
-    parser.add_argument("-l", "--load", type=str, help="Path to load the SPSA state from")
-    parser.add_argument("--verbose", action="store_true", help="Increase output verbosity")
+    parser.add_argument("config_path",   type=str, help="path to the file containing the tuning configuration in JSON format")
+    parser.add_argument("-l", "--load", type=str, help="path to a JSON file containing the state of previous tuning run. Used to resume a previous tuning run")
+    parser.add_argument("--verbose", action="store_true", help="increase output verbosity")
 
     args = parser.parse_args()
 
