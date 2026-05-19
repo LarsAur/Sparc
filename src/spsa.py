@@ -7,20 +7,21 @@ class Spsa:
 
     GAMMA = 0.101
     ALPHA = 0.602
-    A_FACTOR = 1.1
+    A_FACTOR = 0.1
 
     def __init__ (self, parameters: List[TunableParameter], iterations: int):
         self.parameters : List[TunableParameter] = parameters.copy()
         self.perturbations : List[int] = [0] * len(parameters)
         self.iteration = 1
         self.target_iterations = iterations
+        self.A = Spsa.A_FACTOR * self.target_iterations
 
         # Calculate the a and c values for each parameter
         # based on the end values for c_k and r_k and the number of iterations
         for param in self.parameters:
             a_end = param.c_k * param.c_k * param.r_k
             param.c = param.c_k * pow(self.target_iterations, Spsa.GAMMA)
-            param.a = a_end * pow(self.target_iterations * Spsa.A_FACTOR, Spsa.ALPHA)
+            param.a = a_end * pow(self.target_iterations + self.A, Spsa.ALPHA)
 
     def _clamp(value, min_val, max_val):
         return max(min_val, min(max_val, value))
@@ -45,7 +46,7 @@ class Spsa:
 
     def update(self, score):
         for i, param in enumerate(self.parameters):
-            a_i = param.a / pow(self.iteration * Spsa.A_FACTOR, Spsa.ALPHA)
+            a_i = param.a / pow(self.iteration + self.A, Spsa.ALPHA)
             c_i = param.c / pow(self.iteration, Spsa.GAMMA)
 
             param0 = Spsa._clamp(param.current_value + c_i * self.perturbations[i], param.min_val, param.max_val)
